@@ -1,0 +1,68 @@
+[
+	{
+		"type": "assign",
+		"operator": "=",
+		"left": { "type": "var", "value": "x" },
+		"right": {
+			"type": "binary",
+			"operator": "+",
+			"left": { "type": "num", "value": 3 },
+			"right": {
+				"type": "binary",
+				"operator": "*",
+				"left": { "type": "num", "value": 2 },
+				"right": { "type": "num", "value": 5 }
+			}
+		}
+	},
+	{
+		"type": "assign",
+		"operator": "=",
+		"left": { "type": "var", "value": ":test" },
+		"right": { "type": "num", "value": 5 }
+	},
+	{
+		"type": "if",
+		"cond": {
+			"type": "binary",
+			"operator": "==",
+			"left": { "type": "var", "value": "x" },
+			"right": { "type": "num", "value": 13 }
+		},
+		"then": {
+			"type": "prog",
+			"prog": [
+				{
+					"type": "goto",
+					"dst": {
+						"type": "binary",
+						"operator": "-",
+						"left": { "type": "var", "value": "x" },
+						"right": { "type": "num", "value": 5 }
+					}
+				}
+			]
+		},
+		"else": {
+			"type": "prog",
+			"prog": [
+				{
+					"type": "if",
+					"cond": {
+						"type": "binary",
+						"operator": "==",
+						"left": { "type": "var", "value": "nested" },
+						"right": { "type": "str", "value": "test val" }
+					},
+					"then": {
+						"type": "prog",
+						"prog": [
+							{ "type": "goto", "dst": { "type": "num", "value": 0 } }
+						]
+					},
+					"else": { "type": "prog", "prog": [] }
+				}
+			]
+		}
+	}
+]
